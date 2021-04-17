@@ -1,0 +1,28 @@
+{
+	"name": "tatiana5/autoimage",
+	"type": "phpbb-extension",
+	"description": "",
+	"homepage": "https://www.phpbbguru.net/community",
+	"version": "1.0.0",
+	"time": "2021-04-10",
+	"license": "GPL-2.0-only",
+    "authors": [
+        {
+            "name": "Татьяна5",
+            "homepage": "https://www.phpbbguru.net/community",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3"
+    },
+   "require-dev": {
+      "phpbb/epv": "dev-master"
+   },
+   "extra": {
+        "display-name": "Autoimage",
+        "soft-require": {
+           "phpbb/phpbb": ">=3.1.4-RC1"
+        }
+    }
+}

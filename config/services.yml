@@ -1,0 +1,7 @@
+services:
+    tatiana5.autoimage.listener:
+        class: tatiana5\autoimage\event\main_listener
+        arguments:
+            - '@config'
+        tags:
+            - { name: event.listener }
