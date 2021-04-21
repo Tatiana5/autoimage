@@ -74,11 +74,19 @@ class main_listener implements EventSubscriberInterface
 				foreach ($matches as $m)
 				{
 					$header = @get_headers($m[0][0], 1);
-					if (isset($header['Content-Type']) && stripos($header['Content-Type'], 'image/') === 0)
+					if (isset($header['Content-Type']))
 					{
-						// Let's create a self-closing tag around the match
-						$parser->addTagPair($this->tagName, $m[0][1], 0, $m[0][1] + strlen($m[0][0]), 0, 2)
-							 ->setAttribute($this->attrName, $m[0][0]);
+						if (isset($header['Content-Type'][1]))
+						{
+							$header['Content-Type'] = $header['Content-Type'][1];
+						}
+
+						if (stripos($header['Content-Type'], 'image/') === 0)
+						{
+							// Let's create a self-closing tag around the match
+							$parser->addTagPair($this->tagName, $m[0][1], 0, $m[0][1] + strlen($m[0][0]), 0, 2)
+								 ->setAttribute($this->attrName, $m[0][0]);
+						}
 					}
 				}
 			},
