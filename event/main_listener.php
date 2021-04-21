@@ -76,7 +76,7 @@ class main_listener implements EventSubscriberInterface
 					$header = @get_headers($m[0][0], 1);
 					if (isset($header['Content-Type']))
 					{
-						if (isset($header['Content-Type'][1]))
+						if (is_array($header['Content-Type']))
 						{
 							$header['Content-Type'] = $header['Content-Type'][1];
 						}
