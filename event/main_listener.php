@@ -22,23 +22,23 @@ class main_listener implements EventSubscriberInterface
 	public $tagName;
 	public $attrName;
 
-    public function __construct()
-    {
+	public function __construct()
+	{
 		//$this->language = $lang;
 		$this->tagName = 'IMG';
 		$this->attrName = 'src';
-    }
+	}
 
 	static public function getSubscribedEvents()
 	{
 		return array(
-            //'core.text_formatter_s9e_configure_after'	=> 'text_formatter_s9e_configure_after',
+			//'core.text_formatter_s9e_configure_after'	=> 'text_formatter_s9e_configure_after',
 			'core.text_formatter_s9e_parser_setup'	=> 'text_formatter_s9e_parser_setup',
 		);
 	}
 
-    public function text_formatter_s9e_configure_after($event)
-    {
+	public function text_formatter_s9e_configure_after($event)
+	{
 		if (isset($event['configurator']->tags[$this->tagName]))
 		{
 			$tag = $event['configurator']->tags[$this->tagName];
@@ -57,7 +57,7 @@ class main_listener implements EventSubscriberInterface
 		$tag->template = '<img src="{@' . $this->attrName . '}" class="postimage" alt="' . $this->language->lang['IMAGE'] . '"/>';
 
 		$event['configurator']->tags[$this->tagName] = $tag;
-    }
+	}
 
 	public function text_formatter_s9e_parser_setup($event)
 	{
