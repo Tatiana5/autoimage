@@ -17,14 +17,14 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 class main_listener implements EventSubscriberInterface
 {
-    protected $config;
+	//protected $language;
 
 	public $tagName;
 	public $attrName;
 
     public function __construct()
     {
-		$this->config = $config;
+		//$this->language = $lang;
 		$this->tagName = 'IMG';
 		$this->attrName = 'src';
     }
@@ -32,8 +32,8 @@ class main_listener implements EventSubscriberInterface
 	static public function getSubscribedEvents()
 	{
 		return array(
-            'core.text_formatter_s9e_configure_after'	=> 'text_formatter_s9e_configure_after',
-			'core.text_formatter_s9e_parse_before'	=> 'text_formatter_s9e_parser_setup',
+            //'core.text_formatter_s9e_configure_after'	=> 'text_formatter_s9e_configure_after',
+			'core.text_formatter_s9e_parser_setup'	=> 'text_formatter_s9e_parser_setup',
 		);
 	}
 
@@ -54,7 +54,7 @@ class main_listener implements EventSubscriberInterface
 		$tag->attributes->add($this->attrName)->filterChain->append($filter);
 
 		// Set the default template
-		$tag->template = '<img src="{@' . $this->attrName . '}"/>';
+		$tag->template = '<img src="{@' . $this->attrName . '}" class="postimage" alt="' . $this->language->lang['IMAGE'] . '"/>';
 
 		$event['configurator']->tags[$this->tagName] = $tag;
     }
