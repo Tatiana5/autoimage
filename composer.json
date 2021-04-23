@@ -1,7 +1,7 @@
 {
 	"name": "tatiana5/autoimage",
 	"type": "phpbb-extension",
-	"description": "",
+	"description": "Embedding images without bbcodes",
 	"homepage": "https://www.phpbbguru.net/community",
 	"version": "1.0.0",
 	"time": "2021-04-10",
