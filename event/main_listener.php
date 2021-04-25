@@ -73,7 +73,15 @@ class main_listener implements EventSubscriberInterface
 				// preg_match_all($regexp, $text, $matches, PREG_SET_ORDER | PREG_OFFSET_CAPTURE)
 				foreach ($matches as $m)
 				{
-					$header = @get_headers($m[0][0], 1);
+					$validhost = filter_var(gethostbyname(parse_url($m[0][0], PHP_URL_HOST)), FILTER_VALIDATE_IP);
+
+					if (!$validhost)
+					{
+						continue;
+					}
+
+					$header = get_headers($m[0][0], 1);
+
 					if (isset($header['Content-Type']))
 					{
 						if (is_array($header['Content-Type']))
